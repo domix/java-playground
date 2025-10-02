@@ -3,8 +3,10 @@ groovy = "4.0.26"
 spock = "2.3-groovy-4.0"
 byte-buddy = "1.17.6"
 java = "24"
+jackson = '2.20.0'
 
 [libraries]
 groovy-bom = { group = "org.apache.groovy", name = "groovy-bom", version.ref = "groovy" }
 spock-bom = { group = "org.spockframework", name = "spock-bom", version.ref = "spock" }
 byte-buddy = { group = "net.bytebuddy", name = "byte-buddy", version.ref = "byte-buddy" }
+jackson-bom = { group = 'com.fasterxml.jackson', name = 'jackson-bom', version.ref = 'jackson' }
