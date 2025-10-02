@@ -1,31 +1,71 @@
 plugins {
-    id 'java'
+  id 'java'
+  id 'groovy'
+  id 'jacoco'
 }
 
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
+
+configurations {
+  mockitoAgent
+}
+
+def catalogs = project.extensions.getByType(VersionCatalogsExtension)
+def libs = catalogs.named("libs")
 
 dependencies {
-    constraints {
-        // Define dependency versions as constraints
-        implementation 'org.apache.commons:commons-text:1.12.0'
-    }
+  testImplementation platform(libs.findLibrary("groovy-bom").get())
+  testImplementation platform(libs.findLibrary("spock-bom").get())
 
-    // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.1'
+  testImplementation 'org.apache.groovy:groovy'
+  testImplementation "org.spockframework:spock-core"
+  testRuntimeOnly libs.findLibrary("byte-buddy").get()
 
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+  constraints {
+    // Define dependency versions as constraints
+    implementation 'org.apache.commons:commons-text:1.13.0'
+  }
+
+
+  // Use JUnit Jupiter for testing.
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.11.1'
+
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+  testImplementation "org.mockito:mockito-core:5.+"
+  testImplementation 'org.mockito:mockito-junit-jupiter:5.+'
+
+  mockitoAgent("org.mockito:mockito-core:5.+") {
+    transitive = false
+  }
 }
+
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(24)
-    }
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(24)
+  }
 }
 
 tasks.named('test') {
-    // Use JUnit Platform for unit tests.
-    useJUnitPlatform()
+  // Use JUnit Platform for unit tests.
+  useJUnitPlatform()
+  testLogging {
+    events "passed", "skipped", "failed"
+  }
+  finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+  dependsOn test // tests are required to run before generating the report
+}
+
+
+tasks {
+  test {
+    jvmArgs += "-javaagent:${ configurations.mockitoAgent.asPath }"
+  }
 }
