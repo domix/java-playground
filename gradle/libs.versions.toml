@@ -1,5 +1,5 @@
 [versions]
-groovy = "4.0.26"
+groovy = "5.0.1"
 spock = "2.3-groovy-4.0"
 byte-buddy = "1.17.6"
 java = "24"
