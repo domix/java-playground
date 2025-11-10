@@ -3,7 +3,7 @@ groovy = "4.0.26"
 spock = "2.3-groovy-4.0"
 byte-buddy = "1.17.8"
 java = "24"
-jackson = '2.20.0'
+jackson = '2.20.1'
 
 [libraries]
 groovy-bom = { group = "org.apache.groovy", name = "groovy-bom", version.ref = "groovy" }
