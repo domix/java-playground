@@ -1,6 +1,6 @@
 package domix.fun.test.sample;
 
-import domix.fun.Result;
+import codes.domix.fun.Result;
 
 public class UserService {
     private final UserRepository userRepository;
