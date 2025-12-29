@@ -4,5 +4,5 @@ plugins {
 
 
 dependencies {
-  implementation 'codes.domix:fun:0.0.2'
+  implementation 'codes.domix:fun:0.0.4'
 }
