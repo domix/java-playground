@@ -1,7 +1,7 @@
 [versions]
 groovy = "5.0.4"
 spock = "2.4-groovy-5.0"
-byte-buddy = "1.18.4"
+byte-buddy = "1.18.5"
 java = "24"
 jackson = '2.21.0'
 
