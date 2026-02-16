@@ -1,6 +1,6 @@
 plugins {
   id 'buildlogic.java-library-conventions'
-  id "org.openapi.generator" version "7.16.0"
+  id "org.openapi.generator" version "7.19.0"
 }
 
 openApiGenerate {
@@ -49,7 +49,7 @@ dependencies {
   implementation "com.fasterxml.jackson.core:jackson-annotations"
   implementation "com.fasterxml.jackson.core:jackson-databind"
   implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-  implementation "org.openapitools:jackson-databind-nullable:0.2.8"
+  implementation "org.openapitools:jackson-databind-nullable:0.2.9"
   implementation "jakarta.annotation:jakarta.annotation-api:$jakarta_annotation_version"
 //  testImplementation "org.junit.jupiter:junit-jupiter-api:$junit_version"
 }

@@ -1,3 +1,8 @@
 plugins {
     id 'buildlogic.java-library-conventions'
 }
+
+
+dependencies {
+  implementation 'codes.domix:fun:0.0.7'
+}
