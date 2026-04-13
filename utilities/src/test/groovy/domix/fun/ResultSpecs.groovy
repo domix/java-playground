@@ -1,6 +1,6 @@
 package domix.fun
 
-import codes.domix.fun.Result
+import dmx.fun.Result
 import spock.lang.Specification
 
 class ResultSpecs extends Specification {
