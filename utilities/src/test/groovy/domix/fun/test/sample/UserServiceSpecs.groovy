@@ -1,6 +1,6 @@
 package domix.fun.test.sample
 
-import codes.domix.fun.Result
+import dmx.fun.Result
 import spock.lang.Specification
 
 class UserServiceSpecs extends Specification {
@@ -24,7 +24,7 @@ class UserServiceSpecs extends Specification {
       assert result.getError() == 'Contraseña débil'
     when:
       def expectedError = "DB timeout"
-      userRepository.save(_) >> Result.err(expectedError)
+      userRepository.save(_ as CreateUserCommand) >> Result.err(expectedError)
       def password = UUID.randomUUID().toString()
       command = new CreateUserCommand('valid_email@validhost.com', password)
       result = userService.register(command)
@@ -34,7 +34,7 @@ class UserServiceSpecs extends Specification {
     when:
       userRepository = Stub(UserRepository)
       userService = new UserService(userRepository)
-      userRepository.save(_) >> Result.ok(new User(command.email(), command.password()))
+      userRepository.save(_ as CreateUserCommand) >> Result.ok(new User(command.email(), command.password()))
       def result2 = userService.register(command)
     then:
       assert result2.isOk()
