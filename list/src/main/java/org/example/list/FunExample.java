@@ -1,6 +1,6 @@
 package org.example.list;
 
-import dmx.fun.Result;
+import codes.domix.fun.Result;
 
 public class FunExample {
   public Result<String, String> getResult() {
