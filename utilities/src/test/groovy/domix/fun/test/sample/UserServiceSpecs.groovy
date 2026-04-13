@@ -1,6 +1,6 @@
 package domix.fun.test.sample
 
-import codes.domix.fun.Result
+import dmx.fun.Result
 import spock.lang.Specification
 
 class UserServiceSpecs extends Specification {
