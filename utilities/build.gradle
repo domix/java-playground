@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-  implementation 'codes.domix:fun:0.1.0'
+  implementation 'codes.domix:fun:0.2.0'
   api project(':list')
 }
